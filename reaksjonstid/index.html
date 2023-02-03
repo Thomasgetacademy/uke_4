@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 50px;
+        width: 50px;
+        text-align: center;
+      }
+      .testclass1 {
+        background-color: rgb(0, 255, 106);
+        border-radius: 50%;
+      }
+
+      .lightOn {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      // Model
+
+      let htmlDiv = document.getElementById("app");
+      let collumns = 5;
+      let selectedLampIndex = randomNumber();
+      let startTime = new Date().getTime();
+
+      // View
+      updateView();
+      function updateView() {
+        let html = "";
+        for (let i = 0; i < 25; i++) {
+          html += `<div  class='testclass1${lightOn(i + 1)}>${i + 1}</div>`;
+        }
+        htmlDiv.innerHTML = html;
+        htmlDiv.style.display = "grid";
+        htmlDiv.style.gridTemplateColumns = `repeat(${collumns}, 40px)`;
+      }
+
+      // Controller
+
+      function randomNumber() {
+        return Math.floor(Math.random() * 25);
+      }
+
+      function lightOn(i) {
+        // prettier-ignore
+        return selectedLampIndex === i ? " lightOn' onclick=timeBeforeClick()" : "'";
+      }
+
+      function timeBeforeClick() {
+        let finishTime = new Date().getTime();
+        let spentMilliseconds = Math.floor(finishTime - startTime);
+        let spentSeconds = spentMilliseconds / 1000;
+        alert(`Du brukte ${spentSeconds} sekunder på å trykke på knappen`);
+      }
+    </script>
+  </body>
+</html>

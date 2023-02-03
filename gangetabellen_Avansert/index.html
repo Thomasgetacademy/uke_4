@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input onchange="multiply(this)" type="range" min="1" max="100" value="5" />
+    <div id="multiplicationMatrix"></div>
+
+    <script>
+      // Jeg tolket oppgaven som at man skal bruke tallene som allerede eksisterte inne i 'multiplicationMatrix',
+      // og gange disse fra 1 og opp til det tallet brukeren velger i inputet.
+
+      // hjelpevariabler for view og controller
+      let multiplicationMatrixDiv = document.getElementById(
+        "multiplicationMatrix"
+      );
+
+      // model
+      let multiplicationMatrix = [
+        1, 2, 3, 4, 5, 2, 4, 6, 8, 10, 3, 6, 9, 12, 15, 4, 8, 12, 16, 20, 5, 10,
+        15, 20, 25,
+      ];
+      let columnCount = 5;
+      let html = "";
+
+      // view
+      show();
+      function show() {
+        multiplicationMatrixDiv.innerHTML = html;
+        multiplicationMatrixDiv.style.display = "grid";
+        multiplicationMatrixDiv.style.gridTemplateColumns = `repeat(${columnCount},40px, 40px)`;
+      }
+
+      //Controller
+
+      function multiply(inputNumber) {
+        html = "";
+        let inputNum = inputNumber.value;
+        console.log(inputNum);
+        /* i - Starts at 1 and goes until the number the user chose in the input */
+        /* y - Starts at 1 and goes until 10, we use this to multiply every x value with every y value */
+        for (let i = 1; i <= inputNum; i++) {
+          html += `<div> ${i} gangen; `;
+          for (let y = 0; y <= multiplicationMatrix.length - 1; y++) {
+            numberArray = multiplicationMatrix[y];
+            html += `${i * numberArray}, `;
+            console.log(`${i} * ${numberArray} = ${i * numberArray}`);
+          }
+          html += "</div> <br>";
+        }
+        show();
+      }
+    </script>
+  </body>
+</html>

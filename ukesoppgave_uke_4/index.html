@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukesoppgave4</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        // Model
+
+        let points = 0;
+        let inputBox = '';
+        let num1 = randomNumber();
+        let num2 = randomNumber();
+
+
+        // View
+
+        updateView();
+
+        function updateView() {
+            html = /* HTML */`
+            <p>${num1}</p>
+            <input oninput=onInputChange(this)>
+            <p>${num2}</p>
+            <p>Points: ${points}</p>
+
+            <button onclick=checkAnswer()>Submit</button>
+            <button onclick=resetNumbers()>Reset</button>`/* Denne må fikses */
+
+            document.getElementById('app').innerHTML = html
+        }
+
+        // Controller
+        
+        function resetNumbers() {
+            num1 = randomNumber();
+            num2 = randomNumber();
+            updateView()
+        }
+
+        function onInputChange(inputValue) {
+            inputBox = inputValue.value;
+        }
+
+        function randomNumber() {
+            return Math.ceil(Math.random() * 10)
+        }
+
+        function checkAnswer() {
+           
+            if (inputBox === '>' && num1 > num2) {points++; updateView();}
+            if (inputBox === '>' && num1 < num2) {points--; updateView();} 
+
+            if (inputBox === '<' && num1 < num2) {points++; updateView();} 
+            if (inputBox === '<' && num1 > num2) {points--; updateView();} 
+
+            if (inputBox === '=' && num1 === num2) {points++; updateView();} 
+            if (inputBox === '=' && num1 != num2) {points--; updateView();} 
+            // if (inputBox != '>' || '<' || '=') {
+            //     alert("please only use '>' or '<' or '=' operators")
+            // }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Søke Start IT</title>
+    <style>
+      div {
+        color: blue;
+        background-color: azure;
+        padding: 10px;
+        margin: 10px;
+        border: solid cornflowerblue 5px;
+        width: 20px;
+        height: 20px;
+        float: left;
+      }
+
+      div.førstPåLinja {
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="app"></p>
+
+    <script>
+      // Model
+
+      let firstInLine = [4, 7];
+      let numbers = [1, 2, 3, 4, "", 5, 6, 7, 8];
+
+      let r1k1 = "'r1k2', 'r2k1', '', ''";
+      let r1k2 = "'r1k1', 'r2k2', 'r1k3'";
+      let r1k3 = "'r1k2', 'r2k3', '', ''";
+      let r2k1 = "'r1k1', 'r2k2', 'r3k1', ''";
+      let r2k2 = "'r1k2', 'r2k1', 'r2k3', 'r3k2";
+      let r2k3 = "'r1k3', 'r2k2', 'r3k3', ''";
+      let r3k1 = "'r2k1', 'r3k2', '', ''";
+      let r3k2 = "'r2k2', 'r3k1', 'r3k3', ''";
+      let r3k3 = "'r2k3', 'r3k2', '', ''";
+
+      // View
+
+      updateView();
+      function updateView() {
+        let html = "";
+        for (let i = 1; i <= 9; i++) {
+          let numIndex = i - 1;
+          // prettier-ignore
+          html += `<div ${førstPåLinja(i)} onclick="trykk(this, ${i})">${numbers[numIndex]}</div>`;
+        }
+        document.getElementById("app").innerHTML = html;
+      }
+
+      // Controller
+
+      function førstPåLinja(i) {
+        if (firstInLine.includes(i)) {
+          return "class='førstPåLinja'";
+        }
+      }
+
+      function trykk(tagElement, pos) {
+        let tagEle = parseInt(tagElement.innerHTML);
+        // prettier-ignore
+        {
+        pos === 1 && !numbers[1] ? (numbers[1] = tagEle, numbers[0] = '')  :
+        pos === 1 && !numbers[3] ? (numbers[3] = tagEle, numbers[0] = '')  : null;
+
+        pos === 2 && !numbers[0] ? (numbers[0] = tagEle, numbers[1] = '')  :
+        pos === 2 && !numbers[2] ? (numbers[2] = tagEle, numbers[1] = '')  :
+        pos === 2 && !numbers[4] ? (numbers[4] = tagEle, numbers[1] = '')  : null;
+
+        pos === 3 && !numbers[1] ? (numbers[1] = tagEle, numbers[2] = '')  :
+        pos === 3 && !numbers[5] ? (numbers[5] = tagEle, numbers[2] = '')  : null;
+      
+        pos === 4 && !numbers[0] ? (numbers[0] = tagEle, numbers[3] = '')  :
+        pos === 4 && !numbers[4] ? (numbers[4] = tagEle, numbers[3] = '')  :
+        pos === 4 && !numbers[6] ? (numbers[6] = tagEle, numbers[3] = '')  : null;
+        
+        pos === 5 && !numbers[1] ? (numbers[1] = tagEle, numbers[4] = '')  :
+        pos === 5 && !numbers[3] ? (numbers[3] = tagEle, numbers[4] = '')  :
+        pos === 5 && !numbers[5] ? (numbers[5] = tagEle, numbers[4] = '')  :
+        pos === 5 && !numbers[7] ? (numbers[7] = tagEle, numbers[4] = '')  : null;
+        
+        pos === 6 && !numbers[2] ? (numbers[2] = tagEle, numbers[5] = '')  :
+        pos === 6 && !numbers[4] ? (numbers[4] = tagEle, numbers[5] = '')  :
+        pos === 6 && !numbers[8] ? (numbers[8] = tagEle, numbers[5] = '')  : null;
+      
+        pos === 7 && !numbers[3] ? (numbers[3] = tagEle, numbers[6] = '')  :
+        pos === 7 && !numbers[7] ? (numbers[7] = tagEle, numbers[6] = '')  : null;
+        
+        pos === 8 && !numbers[6] ? (numbers[6] = tagEle, numbers[7] = '')  :
+        pos === 8 && !numbers[4] ? (numbers[4] = tagEle, numbers[7] = '')  :
+        pos === 8 && !numbers[8] ? (numbers[8] = tagEle, numbers[7] = '')  : null;
+        
+        pos === 9 && !numbers[5] ? (numbers[5] = tagEle, numbers[8] = '')  :
+        pos === 9 && !numbers[7] ? (numbers[7] = tagEle, numbers[8] = '')  : null;
+        updateView();
+      }
+      }
+    </script>
+  </body>
+</html>
