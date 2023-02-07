@@ -29,15 +29,15 @@
       let firstInLine = [4, 7];
       let numbers = [1, 2, 3, 4, "", 5, 6, 7, 8];
 
-      let r1k1 = "'r1k2', 'r2k1', '', ''";
-      let r1k2 = "'r1k1', 'r2k2', 'r1k3'";
-      let r1k3 = "'r1k2', 'r2k3', '', ''";
-      let r2k1 = "'r1k1', 'r2k2', 'r3k1', ''";
-      let r2k2 = "'r1k2', 'r2k1', 'r2k3', 'r3k2";
-      let r2k3 = "'r1k3', 'r2k2', 'r3k3', ''";
-      let r3k1 = "'r2k1', 'r3k2', '', ''";
-      let r3k2 = "'r2k2', 'r3k1', 'r3k3', ''";
-      let r3k3 = "'r2k3', 'r3k2', '', ''";
+      // let r1k1 = "'r1k2', 'r2k1', '', ''";
+      // let r1k2 = "'r1k1', 'r2k2', 'r1k3'";
+      // let r1k3 = "'r1k2', 'r2k3', '', ''";
+      // let r2k1 = "'r1k1', 'r2k2', 'r3k1', ''";
+      // let r2k2 = "'r1k2', 'r2k1', 'r2k3', 'r3k2";
+      // let r2k3 = "'r1k3', 'r2k2', 'r3k3', ''";
+      // let r3k1 = "'r2k1', 'r3k2', '', ''";
+      // let r3k2 = "'r2k2', 'r3k1', 'r3k3', ''";
+      // let r3k3 = "'r2k3', 'r3k2', '', ''";
 
       // View
 
@@ -46,7 +46,6 @@
         let html = "";
         for (let i = 1; i <= 9; i++) {
           let numIndex = i - 1;
-          // prettier-ignore
           html += `<div ${førstPåLinja(i)} onclick="trykk(this, ${i})">${numbers[numIndex]}</div>`;
         }
         document.getElementById("app").innerHTML = html;
@@ -62,7 +61,6 @@
 
       function trykk(tagElement, pos) {
         let tagEle = parseInt(tagElement.innerHTML);
-        // prettier-ignore
         {
         pos === 1 && !numbers[1] ? (numbers[1] = tagEle, numbers[0] = '')  :
         pos === 1 && !numbers[3] ? (numbers[3] = tagEle, numbers[0] = '')  : null;
