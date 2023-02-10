@@ -72,7 +72,6 @@
             let oIndex = Math.floor(Math.random() * emptyArratSlots.length);
             board[emptyArratSlots[oIndex]] = 'o';
             oTimesPlayed++;
-            // board[oIndex] != "x" && board[oIndex] != "o" ? ((board[oIndex] = "o"), oTimesPlayed++) : ""; ---- This is the way I did it first ----
           }
         }
         checkWinning();
@@ -88,20 +87,20 @@
       function checkWinning() {
         /* Horisontal Win */
 
-        board[0] === 'x' && board[1] === 'x' && board[2] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 1) */ : board[0] === 'o' && board[1] === 'o' && board[2] === 'o' ? (gameOver = true, whoWon = 'o') /* gaveOver('o', 1)  */:
-        board[3] === 'x' && board[4] === 'x' && board[5] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 2) */ : board[3] === 'o' && board[4] === 'o' && board[5] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 2) */ :
-        board[6] === 'x' && board[7] === 'x' && board[8] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 3) */ : board[6] === 'o' && board[7] === 'o' && board[8] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 3) */ :
+        board[0] === 'x' && board[1] === 'x' && board[2] === 'x' ? (gameOver = true, whoWon = 'x') : board[0] === 'o' && board[1] === 'o' && board[2] === 'o' ? (gameOver = true, whoWon = 'o'):
+        board[3] === 'x' && board[4] === 'x' && board[5] === 'x' ? (gameOver = true, whoWon = 'x') : board[3] === 'o' && board[4] === 'o' && board[5] === 'o' ? (gameOver = true, whoWon = 'o'):
+        board[6] === 'x' && board[7] === 'x' && board[8] === 'x' ? (gameOver = true, whoWon = 'x') : board[6] === 'o' && board[7] === 'o' && board[8] === 'o' ? (gameOver = true, whoWon = 'o'):
 
         /* Vertical Win  */
 
-        board[0] === 'x' && board[3] === 'x' && board[6] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 4) */ : board[0] === 'o' && board[3] === 'o' && board[6] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 4) */ :
-        board[1] === 'x' && board[4] === 'x' && board[7] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 5) */ : board[1] === 'o' && board[4] === 'o' && board[7] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 5) */ :
-        board[2] === 'x' && board[5] === 'x' && board[8] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 6) */ : board[2] === 'o' && board[5] === 'o' && board[8] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 6) */ : 
+        board[0] === 'x' && board[3] === 'x' && board[6] === 'x' ? (gameOver = true, whoWon = 'x') : board[0] === 'o' && board[3] === 'o' && board[6] === 'o' ? (gameOver = true, whoWon = 'o'):
+        board[1] === 'x' && board[4] === 'x' && board[7] === 'x' ? (gameOver = true, whoWon = 'x') : board[1] === 'o' && board[4] === 'o' && board[7] === 'o' ? (gameOver = true, whoWon = 'o'):
+        board[2] === 'x' && board[5] === 'x' && board[8] === 'x' ? (gameOver = true, whoWon = 'x') : board[2] === 'o' && board[5] === 'o' && board[8] === 'o' ? (gameOver = true, whoWon = 'o'): 
 
         /* Diagonal Win */
 
-        board[0] === 'x' && board[4] === 'x' && board[8] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 7) */ : board[0] === 'o' && board[4] === 'o' && board[8] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 7) */ :
-        board[2] === 'x' && board[4] === 'x' && board[6] === 'x' ? (gameOver = true, whoWon = 'x') /* gaveOver('x', 8) */ : board[2] === 'o' && board[4] === 'o' && board[6] === 'o' ? (gameOver = true, whoWon = 'o')/*  gaveOver('o', 8) */ : '';
+        board[0] === 'x' && board[4] === 'x' && board[8] === 'x' ? (gameOver = true, whoWon = 'x') : board[0] === 'o' && board[4] === 'o' && board[8] === 'o' ? (gameOver = true, whoWon = 'o'):
+        board[2] === 'x' && board[4] === 'x' && board[6] === 'x' ? (gameOver = true, whoWon = 'x') : board[2] === 'o' && board[4] === 'o' && board[6] === 'o' ? (gameOver = true, whoWon = 'o'): '';
       }
 
       function resetGame() {
